@@ -1,11 +1,25 @@
 <header id="site-header">
   <div class="container">
 
-    <!-- <h1 class="site-title"><a [routerLink]="['/']"> Live Talk </a></h1> -->
+    <h1 class="site-title"><a [routerLink]="['/']"> Live Talk </a></h1>
 
     <nav class="site-nav">
-      ...
+      NAV LINKS
     </nav>
+
+    <div [ngClass]="{'is-user': user, 'is-anon': anon}">
+      <div *ngIf="loading">
+        <span class="username text">loading...</span>
+      </div>
+      <div *ngIf="!loading && !!user">
+        <a [routerLink]="['/profile']">{{user.username}}</a><!-- Should this be /me ?-->
+        <a [routerLink]="['/logout']">logout</a>
+      </div>
+      <div *ngIf="!loading && anon">
+        <a [routerLink]="['/login']">login</a>
+        <a [routerLink]="['/signup']">signup</a>
+      </div>
+    </div>
 
   </div>
 </header>
