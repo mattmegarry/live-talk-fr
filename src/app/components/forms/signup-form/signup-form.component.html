@@ -1,0 +1,32 @@
+<form (ngSubmit)="submitForm(form)" #form="ngForm" novalidate [ngClass]="{'is-processing': processing}">
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
+    <label for="username">Username</label>
+    <input type="text" name="username" [(ngModel)]="username" #usernameField="ngModel" required minlength="4" [disabled]="processing"/>
+    <div *ngIf="feedbackEnabled && usernameField.errors">
+      <p *ngIf="usernameField.errors.required" class="validation">Username required</p>
+      <p *ngIf="usernameField.errors.minlength" class="validation">Username is too short</p>
+    </div>
+  </div>
+
+  <div class="field" [ngClass]="{'has-error': feedbackEnabled && usernameField.errors}">
+    <label for="password">Password</label>
+    <input type="password" name="password" [(ngModel)]="password" #usernameField="ngModel" required minlength="6" [disabled]="processing"/>
+    <div *ngIf="feedbackEnabled && usernameField.errors">
+      <p *ngIf="usernameField.errors.required" class="validation">Password required</p>
+      <p *ngIf="usernameField.errors.minlength" class="validation">Password is too short</p>
+    </div>
+  </div>
+
+  <div class="field submit">
+    <button type="submit" [disabled]="processing">Sign Up</button>
+    <div *ngIf="feedbackEnabled && form.invalid">
+      <p class="validation">There are errors in the form, please review the fields.</p>
+    </div>
+  </div>
+
+  <div class="validation" [ngSwitch]="error" *ngIf="error">
+    <div *ngSwitchCase="'username-not-unique'">Sorry, that username is taken - pick another...</div>
+    <div *ngSwitchDefault>An unexpected error ocurred, please try again</div>
+  </div>
+</form>

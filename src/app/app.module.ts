@@ -15,12 +15,15 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthLoginPageComponent } from './pages/auth-login-page/auth-login-page.component';
 import { AuthSignupPageComponent } from './pages/auth-signup-page/auth-signup-page.component';
+import { SignupFormComponent } from './components/forms/signup-form/signup-form.component';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuardService ] },
   { path: 'login',  component: AuthLoginPageComponent, canActivate: [ RequireAnonGuardService ] },
   { path: 'signup',  component: AuthSignupPageComponent, canActivate: [ RequireAnonGuardService ] },
-  /* { path: 'page',  component: ... , canActivate: [ RequireUserGuardService ] }, */
+  /* { path: 'profile',  component: ProfilePageComponent, canActivate: [ RequireUserGuardService ] },
+  { path: 'lectures',  component: LecturesPageComponent, canActivate: [ RequireUserGuardService ] }, */
   { path: '**', redirectTo: '' }
 ];
 
@@ -29,7 +32,9 @@ const routes: Routes = [
     AppComponent,
     HomePageComponent,
     AuthLoginPageComponent,
-    AuthSignupPageComponent
+    AuthSignupPageComponent,
+    SignupFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
