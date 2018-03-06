@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit{
+  @Output() onLoginFormSubmit = new EventEmitter<object>();
+  @Input() feedbackEnabled;
+  @Input() error;
+  @Input() processing;
 
-  feedbackEnabled = false;
-  error = null;
-  processing = false;
-  username: String;
-  password: String;
+  username: String; //stays
+  password: String; //stays
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -29,16 +28,7 @@ export class LoginFormComponent implements OnInit {
     };
     if (form.valid) {
       this.processing = true;
-      this.authService.login(data)
-        .then((result) => {
-          //handle result, reset form, etc...
-          this.router.navigate(['/']) //Navigate to HOME FOR NOW...
-        })
-        .catch((err) => {
-          this.error = err.error.error;
-          this.processing = false;
-          this.feedbackEnabled = false;
-        });
+      this.onLoginFormSubmit.emit(data);
     }
   }
 }

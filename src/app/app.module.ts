@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthLoginPageComponent } from './pages/auth-login-page/auth-login-page.component';
 import { AuthSignupPageComponent } from './pages/auth-signup-page/auth-signup-page.component';
+
 import { SignupFormComponent } from './components/forms/signup-form/signup-form.component';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 

@@ -1,1 +1,1 @@
-<app-login-form></app-login-form>
+<app-login-form [error]="error" [processing]="processing" [feedbackEnabled]="feedbackEnabled" (onLoginFormSubmit)="checkUser($event)"></app-login-form>

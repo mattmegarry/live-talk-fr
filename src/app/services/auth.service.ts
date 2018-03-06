@@ -30,7 +30,14 @@ export class AuthService {
     };
     return this.httpClient.get(`${this.API_URL}/me`, options)
       .toPromise()
-      .then((user) => this.setUser(user))
+      .then((user: any) =>{ 
+        if (user.error) {
+          console.log('There is no user logged in');
+          this.setUser();
+        } else {
+          this.setUser(user)
+        }
+      })
       .catch((err) => {
         if (err.status === 404) {
           this.setUser();

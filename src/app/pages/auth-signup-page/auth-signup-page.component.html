@@ -1,2 +1,2 @@
-<app-signup-form></app-signup-form>
+<app-signup-form [error]="error" [processing]="processing" [feedbackEnabled]="feedbackEnabled" (onSignUpFormSubmit)="checkUser($event)"></app-signup-form>
 
