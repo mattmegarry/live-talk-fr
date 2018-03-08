@@ -15,16 +15,18 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AuthLoginPageComponent } from './pages/auth-login-page/auth-login-page.component';
 import { AuthSignupPageComponent } from './pages/auth-signup-page/auth-signup-page.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 
 import { SignupFormComponent } from './components/forms/signup-form/signup-form.component';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { PaperstacksComponent } from './components/paperstacks/paperstacks.component';
+import { ExtractionsComponent } from './components/extractions/extractions.component';
 
 const routes: Routes = [
   { path: '',  component: HomePageComponent, canActivate: [ InitAuthGuardService ] },
   { path: 'login',  component: AuthLoginPageComponent, canActivate: [ RequireAnonGuardService ] },
   { path: 'signup',  component: AuthSignupPageComponent, canActivate: [ RequireAnonGuardService ] },
-  /* { path: 'profile',  component: ProfilePageComponent, canActivate: [ RequireUserGuardService ] },
-  { path: 'lectures',  component: LecturesPageComponent, canActivate: [ RequireUserGuardService ] }, */
+  { path: 'dashboard',  component: DashboardPageComponent, canActivate: [ RequireUserGuardService ] },
   { path: '**', redirectTo: '' }
 ];
 
@@ -34,8 +36,11 @@ const routes: Routes = [
     HomePageComponent,
     AuthLoginPageComponent,
     AuthSignupPageComponent,
+    DashboardPageComponent,
     SignupFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    PaperstacksComponent,
+    ExtractionsComponent
   ],
   imports: [
     BrowserModule,

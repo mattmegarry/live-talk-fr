@@ -20,7 +20,7 @@ export class AuthSignupPageComponent implements OnInit {
   checkUser(data) {
     this.authService.signup(data)
       .then((result) => {
-        this.router.navigate(['/']) //Navigate to HOME FOR NOW...
+        this.router.navigate(['/'])
       })
       .catch((err) => {
         this.error = err.error.error;
